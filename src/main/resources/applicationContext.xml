@@ -24,4 +24,8 @@
         <property name="jdbcTemplate" ref="jdbcTemplate"></property>
     </bean>
 
+    <bean id="projectController" class="com.jackie.smartapi.controller.ProjectController">
+        <property name="projectDAO" ref="projectDAO"></property>
+    </bean>
+
 </beans>
