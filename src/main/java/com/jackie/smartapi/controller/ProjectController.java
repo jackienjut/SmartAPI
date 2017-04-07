@@ -20,19 +20,21 @@ import java.lang.reflect.Method;
  * Created by luhaiming on 2017/3/23 0023.
  */
 @Controller
+@RequestMapping(value = "/create")
 public class ProjectController {
 
-    @Autowired
+
     public ProjectDAO projectDAO;
 
     @ResponseBody
     @RequestMapping(value = "/create", method = RequestMethod.POST, headers = "Content-Type=application/json")
     public String insertProject(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         InputStream is = request.getInputStream();
         byte bytes[] = new byte[request.getContentLength()];
         is.read(bytes);
         String jsonStr = new String(bytes, request.getCharacterEncoding());
-        projectDAO.createProject(new Project());
+        // projectDAO.createProject(new Project());
         return "create success";
     }
 
