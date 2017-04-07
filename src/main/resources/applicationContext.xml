@@ -17,7 +17,7 @@
     </bean>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name = "dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
     <bean id="projectDAO" class="com.jackie.smartapi.dao.impl.ProjectImpl">

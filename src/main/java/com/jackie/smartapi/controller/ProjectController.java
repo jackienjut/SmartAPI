@@ -39,7 +39,6 @@ public class ProjectController {
     @ResponseBody
     @RequestMapping(value = "/getall", method = RequestMethod.GET)
     public String getAll() {
-
         return "create success";
     }
 
@@ -47,6 +46,14 @@ public class ProjectController {
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public String getProject() {
         return "create success";
+    }
+
+    public ProjectDAO getProjectDAO() {
+        return projectDAO;
+    }
+
+    public void setProjectDAO(ProjectDAO projectDAO) {
+        this.projectDAO = projectDAO;
     }
 }
 
