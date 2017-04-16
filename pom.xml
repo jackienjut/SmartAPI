@@ -95,7 +95,6 @@
             <version>4.5.2</version>
         </dependency>
 
-
         <!-- CGLib for @Configuration -->
         <dependency>
             <groupId>cglib</groupId>
@@ -103,7 +102,6 @@
             <version>${cglib.version}</version>
             <scope>runtime</scope>
         </dependency>
-
 
         <!-- Servlet Spec -->
         <dependency>
