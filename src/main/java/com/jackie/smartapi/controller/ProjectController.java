@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -53,10 +55,17 @@ public class ProjectController {
 
     @ResponseBody
     @RequestMapping(value = "/getall", method = RequestMethod.GET)
-    public String getAll() {
+    public String getAll(ServletResponse res) {
+
+        HttpServletResponse response = (HttpServletResponse) res;
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+
         ProjectDAO projectDAO = (ProjectDAO) ctx.getBean("projectDAO");
-        List<Map<String, Object>> res = projectDAO.getAllProject();
-        return JSONArray.fromObject(res).toString();
+        List<Map<String, Object>> resList = projectDAO.getAllProject();
+        return JSONArray.fromObject(resList).toString();
     }
 
     @ResponseBody
@@ -64,7 +73,6 @@ public class ProjectController {
     public String getProject() {
         return "create success";
     }
-
 
 
 }
