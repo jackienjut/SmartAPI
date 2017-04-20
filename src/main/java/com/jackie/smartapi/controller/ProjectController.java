@@ -17,7 +17,13 @@ import java.util.Map;
 /**
  * Created by luhaiming on 2017/3/23 0023.
  */
-@CrossOrigin(origins = "*" , maxAge = 3600 )
+
+     /*   HttpServletResponse response = (HttpServletResponse) res;
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");*/
+@CrossOrigin(origins = "*" , maxAge = 3600 ,allowedHeaders = "x-requested-with" ,methods = {RequestMethod.POST , RequestMethod.GET , RequestMethod.OPTIONS})
 @Controller
 @RequestMapping(value = "/project")
 public class ProjectController {
