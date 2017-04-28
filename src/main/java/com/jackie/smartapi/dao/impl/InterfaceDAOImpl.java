@@ -2,16 +2,21 @@ package com.jackie.smartapi.dao.impl;
 
 import com.jackie.smartapi.Model.InterfaceMO;
 import com.jackie.smartapi.dao.InterfaceDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by luhaiming on 2017/4/24 0024.
  */
-public class InterfaceImpl implements InterfaceDAO {
+@Repository("interfaceDAO")
+public class InterfaceDAOImpl implements InterfaceDAO {
 
+    @Resource
     private JdbcTemplate jdbcTemplate;
 
     @Override
@@ -27,7 +32,7 @@ public class InterfaceImpl implements InterfaceDAO {
         } finally {
             return "success";
         }
-     }
+    }
 
     @Override
     public List<Map<String, Object>> getAllInterface(int project_id, int module_id) {
@@ -35,11 +40,4 @@ public class InterfaceImpl implements InterfaceDAO {
         return jdbcTemplate.queryForList(sql);
     }
 
-    public JdbcTemplate getJdbcTemplate() {
-        return jdbcTemplate;
-    }
-
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 }

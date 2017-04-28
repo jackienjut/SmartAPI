@@ -2,16 +2,21 @@ package com.jackie.smartapi.dao.impl;
 
 import com.jackie.smartapi.Model.Project;
 import com.jackie.smartapi.dao.ProjectDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by luhaiming on 2017/3/23 0023.
  */
-public class ProjectImpl implements ProjectDAO {
+@Repository("projectDAO")
+public class ProjectDAOImpl implements ProjectDAO {
 
+    @Resource
     private JdbcTemplate jdbcTemplate;
 
     @Override
@@ -36,11 +41,5 @@ public class ProjectImpl implements ProjectDAO {
         return jdbcTemplate.queryForList(sql);
     }
 
-    public JdbcTemplate getJdbcTemplate() {
-        return jdbcTemplate;
-    }
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 }
