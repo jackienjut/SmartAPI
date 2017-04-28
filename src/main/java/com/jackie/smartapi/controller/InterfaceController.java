@@ -23,13 +23,6 @@ import java.util.Map;
 @RequestMapping(value = "/interface")
 public class InterfaceController {
 
-    static ApplicationContext ctx;
-
-    static {
-        ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-    }
-
-
     @ResponseBody
     @RequestMapping(value = "/getschemes", method = RequestMethod.GET)
     public String getSchemes(ServletResponse res) {
