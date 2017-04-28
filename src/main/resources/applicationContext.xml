@@ -24,5 +24,9 @@
         <property name="jdbcTemplate" ref="jdbcTemplate"></property>
     </bean>
 
+    <bean id="interfaceDAO" class="com.jackie.smartapi.dao.impl.InterfaceImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+    </bean>
+
 
 </beans>
