@@ -28,5 +28,4 @@
         <property name="jdbcTemplate" ref="jdbcTemplate"></property>
     </bean>
 
-
 </beans>

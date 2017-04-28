@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@CrossOrigin(origins = "*" , maxAge = 3600)
+
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
 public class HomeController {
 
@@ -22,8 +23,12 @@ public class HomeController {
     }
 
 
-    @RequestMapping(method= RequestMethod.GET , value = "/test1/{name}")
-    public @ResponseBody String sayHello(@RequestParam(value="name", required=false, defaultValue="Stranger") String name) {
+    @RequestMapping(method = RequestMethod.GET, value = "/test1/{name}")
+    public
+    @ResponseBody
+    String sayHello(@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
         return "aaa" + name;
     }
+
+
 }
