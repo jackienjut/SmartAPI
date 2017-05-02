@@ -20,6 +20,12 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectDAO projectDAO;
 
     @Override
+    public String createProject(Project project) {
+        projectDAO.createProject(project);
+        return "success";
+    }
+
+    @Override
     public Project getProject(int project_id) {
         return null;
     }

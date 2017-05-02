@@ -2,12 +2,14 @@ package com.jackie.smartapi.controller;
 
 import com.jackie.smartapi.Model.Project;
 import com.jackie.smartapi.dao.ProjectDAO;
+import com.jackie.smartapi.service.ProjectService;
 import net.sf.json.JSONArray;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -30,31 +32,13 @@ import java.util.Map;
 @RequestMapping(value = "/project")
 public class ProjectController {
 
-    static ApplicationContext ctx;
-
-    static {
-        ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-    }
-
-/*    @ResponseBody
-    @RequestMapping(value = "/create", method = RequestMethod.POST, headers = "Content-Type=application/json")
-    public String insertProject(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-        InputStream is = request.getInputStream();
-        byte bytes[] = new byte[request.getContentLength()];
-        is.read(bytes);
-        String jsonStr = new String(bytes, request.getCharacterEncoding());
-        // projectDAO.createProject(new Project());
-        return "create success";
-
-    }*/
+    @Resource
+    private ProjectService projectService;
 
     @ResponseBody
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String insertProject(@ModelAttribute("project") Project project) throws IOException {
-
-        ProjectDAO projectDAO = (ProjectDAO) ctx.getBean("projectDAO");
-        projectDAO.createProject(project);
+        projectService.createProject(project);
         return "create success";
     }
 
@@ -68,8 +52,7 @@ public class ProjectController {
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
 
-        ProjectDAO projectDAO = (ProjectDAO) ctx.getBean("projectDAO");
-        List<Map<String, Object>> resList = projectDAO.getAllProject();
+        List<Map<String, Object>> resList =   projectService.getProjects();
         return JSONArray.fromObject(resList).toString();
     }
 

@@ -1,6 +1,8 @@
 package com.jackie.smartapi.controller;
 
+import com.jackie.smartapi.Model.Interface;
 import com.jackie.smartapi.dao.InterfaceDAO;
+import com.jackie.smartapi.service.InterfaceService;
 import net.sf.json.JSONArray;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -22,6 +25,9 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/interface")
 public class InterfaceController {
+
+    @Resource
+    private InterfaceService interfaceService;
 
     @ResponseBody
     @RequestMapping(value = "/getschemes", method = RequestMethod.GET)
@@ -50,8 +56,7 @@ public class InterfaceController {
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
 
-        InterfaceDAO interfaceDAO = (InterfaceDAO) ctx.getBean("interfaceDAO");
-        List<Map<String, Object>> resList = interfaceDAO.getAllInterface(project_id, module_id);
+        List<Map<String, Object>> resList = interfaceService.showInterface(project_id);
         return JSONArray.fromObject(resList).toString();
     }
 
