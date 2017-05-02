@@ -1,13 +1,10 @@
 package com.jackie.smartapi.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@CrossOrigin(origins = "http://localhost:8088" , maxAge = 3600)
 @RestController
 public class HomeController {
 
