@@ -44,15 +44,9 @@ public class ProjectController {
 
     @ResponseBody
     @RequestMapping(value = "/getall", method = RequestMethod.GET)
-    public String getAll(ServletResponse res) {
+    public String getAll() {
 
-        HttpServletResponse response = (HttpServletResponse) res;
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-
-        List<Map<String, Object>> resList =   projectService.getProjects();
+        List<Map<String, Object>> resList = projectService.getProjects();
         return JSONArray.fromObject(resList).toString();
     }
 

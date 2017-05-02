@@ -1,8 +1,7 @@
 package com.jackie.smartapi.dao.impl;
 
-import com.jackie.smartapi.Model.InterfaceMO;
+import com.jackie.smartapi.Model.Interface;
 import com.jackie.smartapi.dao.InterfaceDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +19,7 @@ public class InterfaceDAOImpl implements InterfaceDAO {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public String createInteraface(InterfaceMO interfaceMO) {
+    public String createInteraface(Interface interfaceMO) {
         try {
             String sql = "INSERT INTO interface ( project_id , module_id,scheme ,host,method,parameters ,header , notes) VALUES (?, ?, ?, ?,?, ?, ?, ?)";
 

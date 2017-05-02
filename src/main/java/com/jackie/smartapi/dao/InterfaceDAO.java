@@ -1,6 +1,6 @@
 package com.jackie.smartapi.dao;
 
-import com.jackie.smartapi.Model.InterfaceMO;
+import com.jackie.smartapi.Model.Interface;
 
 import java.util.List;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public interface InterfaceDAO {
 
-    public String createInteraface(InterfaceMO interfaceMO);
+    public String createInteraface(Interface interfaceMO);
 
     public List<Map<String, Object>> getAllInterface(int project_id, int module_id);
 }

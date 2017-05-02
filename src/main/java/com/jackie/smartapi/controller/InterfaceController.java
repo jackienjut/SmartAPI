@@ -31,13 +31,7 @@ public class InterfaceController {
 
     @ResponseBody
     @RequestMapping(value = "/getschemes", method = RequestMethod.GET)
-    public String getSchemes(ServletResponse res) {
-
-        HttpServletResponse response = (HttpServletResponse) res;
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+    public String getSchemes() {
 
         List<String> list = new ArrayList<>();
         list.add("http");
@@ -48,13 +42,7 @@ public class InterfaceController {
 
     @ResponseBody
     @RequestMapping(value = "/getALlInterface/{projectid}/{moduleid}", method = RequestMethod.GET)
-    public String getAllInterface(ServletResponse res, @PathVariable("projectid") int project_id, @PathVariable("moduleid") int module_id) {
-
-        HttpServletResponse response = (HttpServletResponse) res;
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+    public String getAllInterface( @PathVariable("projectid") int project_id, @PathVariable("moduleid") int module_id) {
 
         List<Map<String, Object>> resList = interfaceService.showInterface(project_id);
         return JSONArray.fromObject(resList).toString();

@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by luhaiming on 2017/4/28 0028.
  */
-@Service("projectService")
+@Service("interfaceService")
 public class InterfaceServiceImpl implements InterfaceService {
     @Resource
     private InterfaceDAO interfaceDAO;
